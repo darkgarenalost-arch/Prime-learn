@@ -1,0 +1,20 @@
+name = "freedom-posture-reset"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# Serves index.html + cover.jpg etc. from this same flat folder.
+# Private files are excluded from public serving by .assetsignore
+[assets]
+directory = "./"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# Bundles the PDF INTO the Worker (private). It is never a public file.
+[[rules]]
+type = "Data"
+globs = ["**/*.pdf"]
+fallthrough = true
+
+[vars]
+# Key ID is public by design. The Key SECRET is NOT here (see README).
+RAZORPAY_KEY_ID = "rzp_live_TnjJe0OpmqZzR1"
