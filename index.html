@@ -189,7 +189,7 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
    <div class="price-row"><span class="price">₹199</span>
     <button class="btn gold" data-buy id="heroBuy"><span class="spin"></span><span class="lbl">Get Instant Access — ₹199</span></button></div>
    <div id="heroMsg" role="alert"></div>
-   <p class="note">Secure checkout by Razorpay · Download link appears right after your payment is verified.</p>
+   <p class="note">Secure checkout by Razorpay · Your download appears right after your payment is completed.</p>
    <div class="ticks"><span>Instant PDF download</span><span>Read on phone, tablet or computer</span><span>One-time payment</span></div>
   </div>
   <div class="book-stage">
@@ -249,7 +249,7 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  <div class="wrap center reveal"><span class="eyebrow">How it works</span><h2>Three simple steps</h2></div>
  <div class="wrap grid g3 steps reveal">
   <div class="card"><div class="num">1</div><h3>Purchase securely</h3><p>Pay through Razorpay's secure checkout.</p></div>
-  <div class="card"><div class="num">2</div><h3>Get instant access</h3><p>Your download unlocks as soon as payment is verified.</p></div>
+  <div class="card"><div class="num">2</div><h3>Get instant access</h3><p>Your download unlocks as soon as your payment is completed.</p></div>
   <div class="card"><div class="num">3</div><h3>Follow at your pace</h3><p>Work through the guide whenever it suits you.</p></div>
  </div>
 </section>
@@ -282,16 +282,17 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  <div class="wrap center reveal">
   <span class="eyebrow">Get the guide</span>
   <h2>Start your Posture Reset today</h2>
-  <p class="lead">One-time payment. Digital ebook delivered instantly after verified payment.</p>
+  <p class="lead">One-time payment. Digital ebook delivered instantly after successful payment.</p>
   <div class="buy-card" style="text-align:left">
    <div class="face"><span>Fix Your Back &amp; Neck Posture</span><img src="cover.webp" alt="Ebook cover" loading="lazy" onerror="this.remove()"></div>
    <div>
     <h3 style="font-size:1.3rem">Fix Your Back &amp; Neck Posture — The Posture Reset Method™</h3>
     <div class="price">₹199 <small style="font-size:1rem;color:var(--mute);font-weight:600">INR</small></div>
-    <ul><li>Digital ebook (PDF)</li><li>Download access after verified payment</li><li>Secure checkout via Razorpay</li></ul>
+    <ul><li>Digital ebook (PDF)</li><li>Download access right after successful payment</li><li>Secure checkout via Razorpay</li></ul>
     <button class="btn gold" data-buy id="mainBuy" style="width:100%"><span class="spin"></span><span class="lbl">Get Instant Access — ₹199</span></button>
     <div id="buyMsg" role="alert"></div>
-    <p class="note">Paid already but no download? <button class="linkbtn" data-open="recoverDlg">Recover your download</button></p>
+    <p class="note" id="again" hidden>Already purchased on this device? <a class="linkbtn" href="posture-reset-method-k7q2x9.pdf" download="Fix-Your-Back-and-Neck-Posture.pdf">Download again</a></p>
+    <p class="note">Payment trouble? Email <a href="mailto:freedomhive.in@gmail.com">freedomhive.in@gmail.com</a> with your payment ID.</p>
    </div>
   </div>
  </div>
@@ -302,11 +303,11 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  <div class="wrap center reveal"><span class="eyebrow">FAQ</span><h2>Questions, answered</h2></div>
  <div class="faq reveal">
   <details><summary>What will I receive after purchase?</summary><p>The digital ebook “Fix Your Back &amp; Neck Posture” as a PDF file. No videos, coaching or bonus items are included.</p></details>
-  <details><summary>How do I download the ebook?</summary><p>Once your payment is verified, a “Download Your Ebook” button appears on screen. Click it and the PDF downloads to your device.</p></details>
+  <details><summary>How do I download the ebook?</summary><p>Once your payment is completed, a “Download Your Ebook” button appears on screen. Click it and the PDF downloads to your device.</p></details>
   <details><summary>Is this suitable for beginners?</summary><p>Yes. The guide is structured to be followed step by step, starting with awareness and simple mobility work.</p></details>
   <details><summary>How much time does the daily routine require?</summary><p>The core daily routine is designed to take about 10 minutes.</p></details>
   <details><summary>Does this guarantee pain relief or permanently correct posture?</summary><p>No. This is an educational guide to movement habits, and results vary from person to person. It is not medical advice or treatment. Please consult a qualified professional about pain or health conditions.</p></details>
-  <details><summary>What if my payment succeeds but the download doesn't appear?</summary><p>Use “Recover your download” on this page: enter your Razorpay payment ID (starts with “pay_”, found in your payment confirmation) and the email used at checkout. You can also email us at <a href="mailto:freedomhive.in@gmail.com">freedomhive.in@gmail.com</a>.</p></details>
+  <details><summary>What if my payment succeeds but the download doesn't appear?</summary><p>Email us at <a href="mailto:freedomhive.in@gmail.com">freedomhive.in@gmail.com</a> with your Razorpay payment ID (starts with “pay_”, found in your payment confirmation) and we will send you the ebook.</p></details>
   <details><summary>Can I read it on my phone, tablet or computer?</summary><p>Yes. It's a standard PDF that opens on any device with a PDF reader.</p></details>
  </div>
 </section>
@@ -330,21 +331,13 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  <p>Your ebook is ready to download.</p>
  <a class="btn gold" id="dlBtn" href="#" download>Download Your Ebook</a>
  <p class="note" style="margin-top:16px">Payment ID (keep this safe):</p><div class="pid" id="pidOut"></div>
- <p class="note">Closed the tab by mistake? Use “Recover your download” with this ID and your checkout email.</p>
+ <p class="note">Closed the tab by mistake? Email us this payment ID and we will resend your ebook.</p>
  <button class="linkbtn" data-close>Close</button></div></dialog>
 
 <!-- Preview lightbox -->
 <dialog id="pvDlg" aria-label="Preview page"><button class="x" data-close aria-label="Close" style="background:#fff;border-radius:50%">×</button><img id="pvImg" src="" alt="Enlarged ebook preview page"></dialog>
 
-<!-- Recover -->
-<dialog id="recoverDlg" aria-labelledby="rTitle"><button class="x" data-close aria-label="Close">×</button>
- <h3 id="rTitle">Recover your download</h3><p>Enter the payment ID from your Razorpay confirmation and the email you used at checkout.</p>
- <form id="recoverForm" novalidate>
-  <label for="rPid">Payment ID</label><input id="rPid" type="text" placeholder="pay_XXXXXXXXXXXXXX" autocomplete="off" required>
-  <label for="rEmail">Email used at checkout</label><input id="rEmail" type="email" autocomplete="email" required>
-  <div class="err" id="rErr" role="alert"></div>
-  <button class="btn" type="submit" style="width:100%;margin-top:10px"><span class="spin"></span><span class="lbl">Recover Download</span></button>
- </form></dialog>
+
 
 <!-- Policies: placeholders until you supply real text -->
 <dialog id="privacyDlg"><button class="x" data-close aria-label="Close">×</button><h3>Privacy Policy</h3>
@@ -360,7 +353,16 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
 (function(){
  'use strict';
  var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
- var PRICE=199,CUR='INR',busy=false,order=null;
+ var CFG={
+  RAZORPAY_KEY:'rzp_live_TnjJe0OpmqZzR1',
+  BUSINESS:'Freedom Studio Publishing',
+  PRODUCT:'Fix Your Back & Neck Posture',
+  DESCRIPTION:'Fix Your Back & Neck Posture — The Posture Reset Method™',
+  PRICE:199,CUR:'INR',
+  PDF:'posture-reset-method-k7q2x9.pdf',
+  FILENAME:'Fix-Your-Back-and-Neck-Posture.pdf'
+ };
+ var PRICE=CFG.PRICE,CUR=CFG.CUR,busy=false,LS='ps_paid_id';
  $('#yr').textContent=new Date().getFullYear();
  function fbq_(){try{window.fbq&&window.fbq.apply(null,arguments)}catch(e){}}
 
@@ -374,73 +376,55 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  $$('[data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('dialog').close()})});
  $$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d&&d.id!=='successDlg')d.close()})});
 
-
  // preview lightbox
  $$('[data-pv]').forEach(function(b){b.addEventListener('click',function(){var i=$('#pvImg');i.src=b.dataset.pv;i.alt=$('img',b).alt+' (enlarged)';$('#pvDlg').showModal();fbq_('trackCustom','PreviewOpen')})});
  // reveal
  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});$$('.reveal').forEach(function(el){io.observe(el)})}else{$$('.reveal').forEach(function(el){el.classList.add('in')})}
  // ViewContent when buy section seen
- var vc=false;if('IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting&&!vc){vc=true;fbq_('track','ViewContent',{content_name:'Fix Your Back & Neck Posture',content_type:'product',value:PRICE,currency:CUR})}},{threshold:.3}).observe($('#buy'))}
+ var vc=false;if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting&&!vc){vc=true;fbq_('track','ViewContent',{content_name:CFG.PRODUCT,content_type:'product',value:PRICE,currency:CUR})}},{threshold:.3}).observe($('#buy'))}
  $$('[data-cta]').forEach(function(a){a.addEventListener('click',function(){fbq_('trackCustom','CTAClick',{location:a.dataset.cta})})});
 
- function setLoading(on){busy=on;$$('[data-buy]').forEach(function(b){b.disabled=on;b.classList.toggle('loading',on)})}
  function msg(t){$('#heroMsg').textContent=t||'';$('#buyMsg').textContent=t||''}
- function post(url,body){return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body||{})}).then(function(r){return r.text().then(function(t){var j;try{j=JSON.parse(t)}catch(e){j={error:'The payment server is not responding (code '+r.status+'). Please try again shortly or email freedomhive.in@gmail.com.'}}return{status:r.status,body:j}})})}
+ function setLoading(on){busy=on;$$('[data-buy]').forEach(function(b){b.disabled=on;b.classList.toggle('loading',on)})}
 
- // PURCHASE
+ // show "download again" if this device already bought
+ try{if(localStorage.getItem(LS))$('#again').hidden=false}catch(e){}
+
+ // PURCHASE (client-side Razorpay checkout, no backend)
  function startPurchase(){
   if(busy)return;msg('');
   if(typeof window.Razorpay==='undefined'){msg('Checkout is still loading. Please try again in a moment.');return}
   setLoading(true);
-  fbq_('track','InitiateCheckout',{value:PRICE,currency:CUR,content_name:'Fix Your Back & Neck Posture'});
-  var p=order?Promise.resolve(order):post('/api/create-order');
-  p.then(function(r){
-   var o=order||r.body;
-   if(!o||!o.orderId){throw new Error((o&&o.error)||'Could not start checkout.')}
-   order=o;
+  fbq_('track','InitiateCheckout',{value:PRICE,currency:CUR,content_name:CFG.PRODUCT});
+  try{
    var rz=new Razorpay({
-    key:o.keyId,amount:o.amount,currency:o.currency,order_id:o.orderId,
-    name:'Freedom Studio Publishing',description:o.description,
+    key:CFG.RAZORPAY_KEY,
+    amount:PRICE*100,
+    currency:CUR,
+    name:CFG.BUSINESS,
+    description:CFG.DESCRIPTION,
+    notes:{product:'posture-reset'},
     theme:{color:'#0E7C7B'},
-    handler:function(resp){verify(resp)},
+    handler:function(resp){setLoading(false);onPaid(resp.razorpay_payment_id||'')},
     modal:{ondismiss:function(){setLoading(false);msg('Payment was cancelled. You have not been charged.')}}
    });
-   rz.on('payment.failed',function(){setLoading(false);order=null;msg('Payment failed. You can try again with another method.')});
+   rz.on('payment.failed',function(){setLoading(false);msg('Payment failed. You can try again with another method.')});
    rz.open();
-  }).catch(function(e){setLoading(false);order=null;msg(e.message||'Something went wrong. Please try again.')});
+  }catch(e){setLoading(false);msg('Could not open checkout. Please try again.')}
  }
  $$('[data-buy]').forEach(function(b){b.addEventListener('click',startPurchase)});
 
- function verify(resp){
-  msg('Verifying your payment…');
-  post('/api/verify',resp).then(function(r){
-   setLoading(false);
-   if(r.body&&r.body.ok){order=null;msg('');showSuccess(r.body,true)}
-   else if(r.status===202){msg('Your payment is still processing. Please use “Recover your download” in a minute with payment ID '+resp.razorpay_payment_id+'.')}
-   else{msg((r.body&&r.body.error)||'We could not verify your payment.')+''}
-  }).catch(function(){setLoading(false);msg('Network error while verifying. Your payment ID is '+resp.razorpay_payment_id+' — use “Recover your download” to get your file.')});
- }
-
- function showSuccess(d,fresh){
-  $('#dlBtn').href=d.downloadUrl;$('#pidOut').textContent=d.paymentId;
+ function onPaid(pid){
+  try{localStorage.setItem(LS,pid||'paid')}catch(e){}
+  $('#again').hidden=false;
+  $('#dlBtn').href=CFG.PDF;
+  $('#dlBtn').setAttribute('download',CFG.FILENAME);
+  $('#pidOut').textContent=pid;
   $('#successDlg').showModal();
-  if(fresh){ // Purchase fires only after server-confirmed payment; deduplicated per payment
-   var k='purchase_'+d.paymentId,done=false;try{done=localStorage.getItem(k)}catch(e){}
-   if(!done){fbq_('track','Purchase',{value:PRICE,currency:CUR,content_name:'Fix Your Back & Neck Posture'},{eventID:d.paymentId});try{localStorage.setItem(k,'1')}catch(e){}}
-  }
+  // Purchase fires only after Razorpay confirms the payment; deduplicated per payment
+  var k='purchase_'+pid,done=false;try{done=localStorage.getItem(k)}catch(e){}
+  if(!done){fbq_('track','Purchase',{value:PRICE,currency:CUR,content_name:CFG.PRODUCT},{eventID:pid});try{localStorage.setItem(k,'1')}catch(e){}}
  }
-
- // RECOVERY
- $('#recoverForm').addEventListener('submit',function(e){
-  e.preventDefault();var btn=e.target.querySelector('button'),err=$('#rErr');err.textContent='';
-  var pid=$('#rPid').value.trim(),em=$('#rEmail').value.trim();
-  if(!/^pay_\w{10,}$/.test(pid)||!/^\S+@\S+\.\S+$/.test(em)){err.textContent='Please enter a valid payment ID and email.';return}
-  btn.disabled=true;btn.classList.add('loading');
-  post('/api/recover',{paymentId:pid,email:em}).then(function(r){
-   btn.disabled=false;btn.classList.remove('loading');
-   if(r.body&&r.body.ok){$('#recoverDlg').close();showSuccess(r.body,false)}else{err.textContent=(r.body&&r.body.error)||'Could not recover.'}
-  }).catch(function(){btn.disabled=false;btn.classList.remove('loading');err.textContent='Network error. Please try again.'});
- });
 })();
 </script>
 </body>
