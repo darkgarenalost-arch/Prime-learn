@@ -1,0 +1,35 @@
+name = "posture-reset-store"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# Static site (index.html + assets/) is served by Workers Assets; only /api/* runs the Worker first.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# ---- Public, non-secret settings ----
+[vars]
+RAZORPAY_KEY_ID = "rzp_live_REPLACE_ME"      # Key ID is public by design. Use rzp_test_... while testing.
+PRODUCT_AMOUNT_MINOR = "29900"               # ₹299.00 = 29900 paise (minor units). Server-side source of truth.
+PRODUCT_CURRENCY = "INR"
+PRODUCT_NAME = "Fix Your Back & Neck Posture — The Posture Reset Method™"
+MERCHANT_NAME = "Freedom Studio Publishing"
+EBOOK_OBJECT_KEY = "posture-reset-method.pdf"
+EBOOK_DOWNLOAD_FILENAME = "Fix-Your-Back-and-Neck-Posture-The-Posture-Reset-Method.pdf"
+
+# ---- Storage ----
+# 1) npx wrangler kv namespace create ORDERS   -> paste the returned id below
+[[kv_namespaces]]
+binding = "ORDERS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# 2) npx wrangler r2 bucket create posture-ebook-private   (keep it PRIVATE: no public access / custom domain)
+[[r2_buckets]]
+binding = "EBOOK"
+bucket_name = "posture-ebook-private"
+
+# ---- Secrets (never put these in this file) ----
+#   npx wrangler secret put RAZORPAY_KEY_SECRET
+#   npx wrangler secret put RAZORPAY_WEBHOOK_SECRET
+#   npx wrangler secret put TOKEN_SECRET        (any long random string, e.g. `openssl rand -hex 32`)
