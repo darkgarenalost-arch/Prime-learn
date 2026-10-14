@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /posture-reset-method-k7q2x9.pdf
