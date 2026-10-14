@@ -9,7 +9,7 @@
 <meta property="og:type" content="product">
 <meta property="og:title" content="Fix Your Back & Neck Posture — The Posture Reset Method™">
 <meta property="og:description" content="A practical ebook for desk workers: posture habits, mobility, strength and a 30-day program. Instant download.">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/cover.png"><!-- TODO: replace with your real domain -->
+<meta property="og:image" content="https://YOUR-DOMAIN.com/cover.jpg"><!-- TODO: replace with your real domain -->
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,6 +101,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
 /* preview */
 .preview-box{margin-top:40px;border:2px dashed #b9c4d8;border-radius:var(--r);padding:48px 24px;text-align:center;background:#fff;color:var(--mute)}
 .preview-box strong{display:block;color:var(--navy);margin-bottom:6px}
+/* preview gallery */
+.pv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;align-items:start}
+.pv{padding:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:0 10px 30px -18px rgba(27,42,74,.4);transition:transform .25s,box-shadow .25s}
+.pv:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.pv img{width:100%;height:auto}
+#pvDlg{max-width:min(900px,94vw);padding:12px;background:#fff}
+#pvDlg img{width:100%;height:auto;max-height:85vh;object-fit:contain;border-radius:14px}
+@media (max-width:700px){.pv-grid{grid-template-columns:1fr}}
 /* buy */
 .buy{background:radial-gradient(800px 400px at 50% 0,rgba(14,124,123,.35),transparent 70%),linear-gradient(160deg,var(--navy),#142040);color:#fff}
 .buy-card{background:#fff;color:var(--ink);border-radius:28px;padding:44px;max-width:860px;margin:44px auto 0;display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
@@ -249,9 +257,12 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
 <!-- PREVIEW -->
 <section>
  <div class="wrap center reveal"><span class="eyebrow">Preview</span><h2>A look inside the book</h2>
-  <div class="preview-box"><strong>Preview pages coming soon</strong>
-   <!-- TODO: replace this box with real page images, e.g. <img src="preview-1.jpg" alt="..."> -->
-   Sample pages from the ebook will be shown here.</div></div>
+  <p class="lead">Sample pages from the ebook. Tap any page to enlarge.</p></div>
+ <div class="wrap pv-grid reveal">
+  <button class="pv" type="button" data-pv="preview-1.webp" aria-label="Enlarge preview page 1"><img src="preview-1.webp" alt="Ebook preview page 1" loading="lazy" decoding="async" onerror="this.closest('.pv').remove()"></button>
+  <button class="pv" type="button" data-pv="preview-2.webp" aria-label="Enlarge preview page 2"><img src="preview-2.webp" alt="Ebook preview page 2" loading="lazy" decoding="async" onerror="this.closest('.pv').remove()"></button>
+  <button class="pv" type="button" data-pv="preview-3.webp" aria-label="Enlarge preview page 3"><img src="preview-3.webp" alt="Ebook preview page 3" loading="lazy" decoding="async" onerror="this.closest('.pv').remove()"></button>
+ </div>
 </section>
 
 <!-- AUDIENCE -->
@@ -322,6 +333,9 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  <p class="note">Closed the tab by mistake? Use “Recover your download” with this ID and your checkout email.</p>
  <button class="linkbtn" data-close>Close</button></div></dialog>
 
+<!-- Preview lightbox -->
+<dialog id="pvDlg" aria-label="Preview page"><button class="x" data-close aria-label="Close" style="background:#fff;border-radius:50%">×</button><img id="pvImg" src="" alt="Enlarged ebook preview page"></dialog>
+
 <!-- Recover -->
 <dialog id="recoverDlg" aria-labelledby="rTitle"><button class="x" data-close aria-label="Close">×</button>
  <h3 id="rTitle">Recover your download</h3><p>Enter the payment ID from your Razorpay confirmation and the email you used at checkout.</p>
@@ -360,6 +374,9 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
  $$('[data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('dialog').close()})});
  $$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d&&d.id!=='successDlg')d.close()})});
 
+
+ // preview lightbox
+ $$('[data-pv]').forEach(function(b){b.addEventListener('click',function(){var i=$('#pvImg');i.src=b.dataset.pv;i.alt=$('img',b).alt+' (enlarged)';$('#pvDlg').showModal();fbq_('trackCustom','PreviewOpen')})});
  // reveal
  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});$$('.reveal').forEach(function(el){io.observe(el)})}else{$$('.reveal').forEach(function(el){el.classList.add('in')})}
  // ViewContent when buy section seen
