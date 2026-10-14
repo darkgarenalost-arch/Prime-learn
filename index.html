@@ -385,7 +385,7 @@ input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1.5px sol
 
  function setLoading(on){busy=on;$$('[data-buy]').forEach(function(b){b.disabled=on;b.classList.toggle('loading',on)})}
  function msg(t){$('#heroMsg').textContent=t||'';$('#buyMsg').textContent=t||''}
- function post(url,body){return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body||{})}).then(function(r){return r.json().then(function(j){return{status:r.status,body:j}})})}
+ function post(url,body){return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body||{})}).then(function(r){return r.text().then(function(t){var j;try{j=JSON.parse(t)}catch(e){j={error:'The payment server is not responding (code '+r.status+'). Please try again shortly or email freedomhive.in@gmail.com.'}}return{status:r.status,body:j}})})}
 
  // PURCHASE
  function startPurchase(){
